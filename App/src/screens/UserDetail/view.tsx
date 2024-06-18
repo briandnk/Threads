@@ -1,15 +1,5 @@
 import React, {useCallback, useRef, useState} from 'react';
-import AppContainer from '@components/AppContainer';
-import AppText from '@components/AppText';
-import {SvgComponent} from '@assets/svg';
 import {Pressable, View} from 'react-native';
-import {colors, layout, layoutValue} from '@themes/index';
-import {AppStyleSheet} from '@themes/responsive';
-import Avatar from '@components/Avatar';
-import AppButton from '@components/AppButton';
-import ThreadsTab from './Components/ThreadsTab';
-import RepliesTab from './Components/RepliesTab';
-
 import {
   CollapsibleRef,
   TabBarProps,
@@ -23,9 +13,20 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+
+import SvgComponent from '@svg/index';
+import layout from '@themes/layout';
+import layoutValue from '@themes/layoutValue';
+import {colors} from '@themes/color';
+import {AppStyleSheet} from '@themes/responsive';
+import {Avatar, AppButton, AppText, AppContainer} from '@components';
+
+import ThreadsTab from '@screens/UserDetail/Components/ThreadsTab';
+import RepliesTab from '@screens/UserDetail/Components/RepliesTab';
+
 import {width as DeviceWidth} from '@utils/DeviceInfo';
 
-const UserDetailView = () => {
+const UserDetailScreenView = () => {
   const refMap = useRef<CollapsibleRef>();
   const headerHeight = useRef<number>(234);
   const focusedTabValue = useSharedValue<string>('Threads');
@@ -239,7 +240,7 @@ const UserDetailView = () => {
   );
 };
 
-export default UserDetailView;
+export default UserDetailScreenView;
 
 const styles = AppStyleSheet.create({
   headerContainer: {

@@ -1,7 +1,4 @@
 import React, {useState} from 'react';
-import {AppContainer, AppInput, AppText, Avatar} from '@components/index';
-import {AppStyleSheet} from '@themes/responsive';
-
 import {
   InputAccessoryView,
   KeyboardAvoidingView,
@@ -10,11 +7,15 @@ import {
   ScrollView,
   View,
 } from 'react-native';
-import {colors, layout} from '@themes/index';
-import {SvgComponent} from '@assets/svg';
+
+import {AppContainer, AppText, AppInput, Avatar} from '@components';
+import {AppStyleSheet} from '@themes/responsive';
+import layout from '@themes/layout';
+import {colors} from '@themes/color';
+import SvgComponent from '@svg/index';
 import HandelKeyboard from '@utils/KeyboardInfo';
 
-const NewPostView = () => {
+const NewPostScreenView = () => {
   const inputAccessoryViewID = 'postThreadInput';
   const {heightKB} = HandelKeyboard();
   const [contentViewHeight, setContentViewHeight] = useState<number>(0);
@@ -145,7 +146,7 @@ const NewPostView = () => {
   );
 };
 
-export default NewPostView;
+export default NewPostScreenView;
 
 const styles = AppStyleSheet.create({
   container: {marginTop: 0, paddingTop: 16},

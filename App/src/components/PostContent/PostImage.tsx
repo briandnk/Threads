@@ -1,10 +1,11 @@
 import React, {memo, useCallback, useEffect, useState} from 'react';
-import {getImageSize, ISize} from '@hooks/getImageInfo';
-import {AppImage} from '@components/index';
-import {AppStyleSheet} from '@themes/responsive';
-import {imageHeight, imageWidth} from '@constants/index';
 import {Pressable} from 'react-native';
-import {navigateTo} from '@navigation/NavigationService';
+
+import {getImageSize, ISize} from '@hooks/getImageInfo';
+import {AppImage} from '@components';
+import {AppStyleSheet} from '@themes/responsive';
+import {imageHeight, imageWidth} from '@constants/deviceSize';
+import {navigateTo} from '@navigators';
 import {SCREEN_NAME} from '@navigation/ScreenName';
 
 export interface PostImageProps {

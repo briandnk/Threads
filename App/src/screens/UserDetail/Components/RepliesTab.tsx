@@ -1,8 +1,8 @@
-import {View} from 'react-native';
 import React from 'react';
-import AppText from '@components/AppText';
-// import {layout} from '@themes/index';
+import {View} from 'react-native';
 import {Tabs} from 'react-native-collapsible-tab-view';
+
+import {AppText} from '@components';
 
 const RepliesTab = () => {
   return (

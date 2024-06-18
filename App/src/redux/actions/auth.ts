@@ -1,63 +1,42 @@
-import {actionTypes} from '@action';
+import {actionTypes} from '@actions';
 
-const {USER} = actionTypes;
-export const onLogin = (params: any, callback = () => {}) => {
+const {AUTH} = actionTypes;
+
+export const onLogin = (username: string, password: string, callback: any) => {
   return {
-    type: USER.LOGIN,
-    params,
-    callback,
+    type: AUTH.LOGIN,
+    payload: {params: {username, password}, callback},
   };
 };
 
-export const onRegister = (params: any, callback = () => {}) => {
+export const onLogout = () => {
   return {
-    type: USER.REGISTER,
-    params,
-    callback,
+    type: AUTH.LOGOUT,
+    payload: {},
   };
 };
 
-export const onForgot = (params: any, callback = () => {}) => {
+export const onRegister = (
+  username: string,
+  password: string,
+  callback: any,
+) => {
   return {
-    type: USER.FORGOT,
-    params,
-    callback,
+    type: AUTH.REGISTER,
+    payload: {params: {username, password}, callback},
   };
 };
 
-export const onLogout = (callback = () => {}) => {
+export const saveToken = (token: string) => {
   return {
-    type: USER.LOGOUT,
-    callback,
+    type: AUTH.SAVE_TOKEN,
+    token,
   };
 };
 
-export const onDeactivate = (callback = () => {}) => {
+export const addAccountInfo = (accountInfo: any) => {
   return {
-    type: USER.DEACTIVATE,
-    callback,
-  };
-};
-
-export const onExpire = (callback = () => {}) => {
-  return {
-    type: USER.EXPIRE_TOKEN,
-    callback,
-  };
-};
-
-export const onEditProfile = (params: any, callback = () => {}) => {
-  return {
-    type: USER.EDIT_PROFILE,
-    params,
-    callback,
-  };
-};
-
-export const onChangePassword = (params: any, callback = () => {}) => {
-  return {
-    type: USER.CHANGE_PASSWORD,
-    params,
-    callback,
+    type: AUTH.ADD_ACCOUNT_INFO,
+    accountInfo,
   };
 };

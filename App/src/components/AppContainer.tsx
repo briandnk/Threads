@@ -1,3 +1,4 @@
+import React, {Fragment, useMemo} from 'react';
 import {
   Pressable,
   StatusBar,
@@ -5,15 +6,16 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import React, {Fragment, useMemo} from 'react';
 import {Edge, SafeAreaView} from 'react-native-safe-area-context';
-import {colors, layout} from '@themes/index';
+
+import layout from '@themes/layout';
+import {colors} from '@themes/color';
 import Animated from 'react-native-reanimated';
 import {AppStyleSheet} from '@themes/responsive';
 import useStatusBarHeight from '@hooks/getStatusBarHeight';
-import {SvgComponent} from '@assets/svg';
-import {goBack} from '@navigation/NavigationService';
-import AppText from './AppText';
+import SvgComponent from '@svg/index';
+import {goBack} from '@navigators';
+import {AppText} from '@components';
 
 interface AppContainerProps {
   children: React.ReactNode;
@@ -83,7 +85,7 @@ const AppContainer = ({
         style={[
           styles.container,
           {
-            backgroundColor: colors.background,
+            backgroundColor: colors.primary,
           },
           containerStyle,
         ]}>
@@ -97,7 +99,7 @@ const AppContainer = ({
           style={[
             styles.container,
             {
-              backgroundColor: colors.background,
+              backgroundColor: colors.primary,
               marginTop: statusbarHeight,
             },
             style,
@@ -139,7 +141,7 @@ const styles = AppStyleSheet.create({
     marginLeft: 4,
   },
   header: {
-    backgroundColor: colors.background,
+    backgroundColor: colors.primary,
     paddingHorizontal: 16,
   },
   button: {

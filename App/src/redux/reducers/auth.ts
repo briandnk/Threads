@@ -1,22 +1,32 @@
-import {actionTypes} from '@action';
+import {actionTypes} from '@actions';
+import _ from 'lodash';
 
 const initialState = {
-  user: null,
+  token: null,
+  listAccountInfo: [],
+  currentAccountIndex: 0,
 };
 
-const {USER} = actionTypes;
+const {AUTH} = actionTypes;
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: any) => {
   switch (action?.type) {
-    case USER.UPDATE_INFO.SUCCESS:
+    case AUTH.SAVE_TOKEN:
       return {
         ...state,
-        user: {...state.user, ...action.user},
+        token: action?.token,
       };
-    case USER.LOGOUT.SUCCESS:
+    case AUTH.ADD_ACCOUNT_INFO:
       return {
         ...state,
-        user: null,
+        listAccountInfo: !_.isArray(state.listAccountInfo)
+          ? [action?.accountInfo]
+          : [...state.listAccountInfo, action?.accountInfo],
+      };
+    case AUTH.LOGOUT:
+      return {
+        ...state,
+        token: null,
       };
     default:
       return state;

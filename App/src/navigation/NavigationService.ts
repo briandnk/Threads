@@ -6,11 +6,11 @@ import {
 
 export const navigationRef = createNavigationContainerRef();
 
-export function navigateTo(routeName: string, params?: object) {
+export const navigateTo = (routeName: string, params?: object) => {
   if (navigationRef.isReady()) {
     navigationRef.dispatch(CommonActions.navigate(routeName, params));
   }
-}
+};
 
 export const navigatePush = (name, params) => {
   if (navigationRef.isReady()) {
@@ -40,7 +40,7 @@ export const navigateAndSimpleReset = (name, index = 0) => {
   }
 };
 
-export function navigateReplace(name, param) {
+export const navigateReplace = (name, param) => {
   if (navigationRef.isReady()) {
     navigationRef.dispatch(
       StackActions.replace(name, {
@@ -48,8 +48,14 @@ export function navigateReplace(name, param) {
       }),
     );
   }
-}
+};
 
 export const goBack = () => {
   navigationRef.goBack();
+};
+
+export const popToTop = () => {
+  if (navigationRef.isReady()) {
+    navigationRef.dispatch(StackActions.popToTop());
+  }
 };
